@@ -65,5 +65,5 @@ jobs:
         with:
           appId: 1:499380175274:android:d839cf3b6e98a68945abd3
           token: 1//0eE2rFYcAAZq-CgYIARAAGA4SNwF-L9IryDLBPDpjovfAT6KMAgtBqhRMCTrVGk5-fk6tYTnGDU_0bStrUgP8uOYzz_5ymm429xI
-          groups: testers
+          groups: hellowandroid
           file: ${{steps.sign_app.outputs.signedReleaseFile}}
