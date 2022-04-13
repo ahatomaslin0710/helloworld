@@ -46,7 +46,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pods-
       - name: Install Pods
-        run: ls . && cd ios && pod install --repo-update && cd ..
+        run: pod install --repo-update
       - name: Build IOS App
         uses: yukiarrr/ios-build-action@v1.4.0
         with:
