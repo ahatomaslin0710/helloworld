@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-
 # on:
 #   workflow_dispatch: # To trigger manual build
 #   release:
@@ -19,24 +18,17 @@ jobs:
         uses: actions/setup-java@v1.4.3
         with:
           java-version: 1.8
-      - uses: actions/setup-node@v2
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Restore node_modules from cache
+        uses: actions/cache@v2
+        id: yarn-cache
         with:
-          node-version: '16.0.0'
-
-      - name: Setup yarn
-        run: npm install -g yarn
-
-      # - name: Get yarn cache directory path
-      #   id: yarn-cache-dir-path
-      #   run: echo "::set-output name=dir::$(yarn cache dir)"
-      # - name: Restore node_modules from cache
-      #   uses: actions/cache@v2
-      #   id: yarn-cache
-      #   with:
-      #     path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-      #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-yarn-
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
       - name: Install dependencies # install project deps with --frozen-lockfile to make sure we will have the same packages version ( very recommended  on running yarn install on ci)
         run: yarn install --frozen-lockfile
       ## configure cash for gradle : will help to reduce build time
@@ -63,15 +55,15 @@ jobs:
         uses: r0adkll/sign-android-release@v1
         with:
           releaseDirectory: android/app/build/outputs/apk/release
-          signingKeyBase64: ${{ secrets.ANDROID_SIGNING_KEY }}
-          alias: ${{ secrets.ANDROID_ALIAS }}
-          keyStorePassword: ${{ secrets.ANDROID_KEY_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
-      # ## Distribute app to Firebase App Distribution for testing / use google play internal track if you have a google play account
-      # - name: upload artifact to Firebase App Distribution
-      #   uses: wzieba/Firebase-Distribution-Github-Action@v1
-      #   with:
-      #     appId: ${{secrets.ANDROID_FIREBASE_APP_ID}}
-      #     token: ${{secrets.ANDROID_FIREBASE_TOKEN}}
-      #     groups: testers
-      #     file: ${{steps.sign_app.outputs.signedReleaseFile}}
+          signingKeyBase64: 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
+          alias: my-key-alias2
+          keyStorePassword: a12345678
+          keyPassword: a12345678
+      ## Distribute app to Firebase App Distribution for testing / use google play internal track if you have a google play account
+      - name: upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: 1:499380175274:android:d839cf3b6e98a68945abd3
+          token: 1//0eE2rFYcAAZq-CgYIARAAGA4SNwF-L9IryDLBPDpjovfAT6KMAgtBqhRMCTrVGk5-fk6tYTnGDU_0bStrUgP8uOYzz_5ymm429xI
+          groups: testers
+          file: ${{steps.sign_app.outputs.signedReleaseFile}}
