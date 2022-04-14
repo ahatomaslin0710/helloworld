@@ -58,10 +58,10 @@ jobs:
           certificate-password: xup6jo3fup6
           workspace-path: ios/helloworld.xcworkspace
           scheme: helloworld
-      # - name: 'Upload app to TestFlight'
-      #   uses: apple-actions/upload-testflight-build@v1
-      #   with:
-      #     app-path: 'output.ipa'
-      #     issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
-      #     api-key-id: ${{ secrets.APPSTORE_API_KEY_ID }}
-      #     api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+      - name: 'Upload app to TestFlight'
+        uses: apple-actions/upload-testflight-build@v1
+        with:
+          app-path: 'output.ipa'
+          issuer-id: 752ab3fd-495c-4d6c-baaa-5aa8d32b4f47
+          api-key-id: 4NWUL9Y66J
+          api-private-key: MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQggySVZXkLBl9sT5lSQH84GP8VVEb1L1n2heeWEGykXoGgCgYIKoZIzj0DAQehRANCAATL6wJLjVttCrKc6R3DDHUvraZ8fwScM/ECFAJMKPfAGI8x8jMmXU4HzzEsARo3pfG53dnJN/3AoBdnIP+4mJb9
