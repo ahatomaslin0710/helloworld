@@ -64,4 +64,4 @@ jobs:
           app-path: './ios/output.ipa'
           issuer-id: 752ab3fd-495c-4d6c-baaa-5aa8d32b4f47
           api-key-id: 4NWUL9Y66J
-          api-private-key: AuthKey_4NWUL9Y66J.p8
+          api-private-key: ./AuthKey_4NWUL9Y66J.p8
