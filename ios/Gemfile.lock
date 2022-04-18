@@ -209,10 +209,10 @@ GEM
       xcpretty (~> 0.2, >= 0.0.7)
 
 PLATFORMS
-  x86_64-darwin-20
+  ruby
 
 DEPENDENCIES
   fastlane
 
 BUNDLED WITH
-   2.3.11
+   1.17.2
