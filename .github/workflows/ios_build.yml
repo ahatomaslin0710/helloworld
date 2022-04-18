@@ -59,8 +59,7 @@ jobs:
           workspace-path: ios/helloworld.xcworkspace
           scheme: helloworld
       - name: Upload Artifact to Testflight
-        # run: xcrun altool --upload-app --type ios --file ./output.ipa --username horsekit1982@gmail.com --password lxzl-guyp-pqub-ojpv
-        run: pwd && ls -alh
+        run: xcrun altool --upload-app --type ios --file ../output.ipa --username horsekit1982@gmail.com --password lxzl-guyp-pqub-ojpv
         env:
           APPLE_USER_NAME: ${{secrets.YOUR_APPLE_ACCOUNT_ID}}
           APPLE_APP_SPECIFIC_PASSWORD: ${{secrets.YOUR_APP_SPECIFIC_PASSWORD}}
