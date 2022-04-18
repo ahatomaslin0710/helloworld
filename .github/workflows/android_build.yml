@@ -81,7 +81,7 @@ jobs:
       #     alias: ${{ secrets.ANDROID_ALIAS }}
       #     keyStorePassword: ${{ secrets.ANDROID_KEY_STORE_PASSWORD }}
       #     keyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
-      ## Distribute  App to google play alpha track
+      # # Distribute  App to google play alpha track
       # - name: Upload App to Google Play
       #   uses: r0adkll/upload-google-play@v1
       #   with:

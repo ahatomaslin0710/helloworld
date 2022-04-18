@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:499380175274:android:d839cf3b6e98a68945abd3",
         "android_client_info": {
-          "package_name": "com.helloworld"
+          "package_name": "com.tomas.helloworld"
         }
       },
       "oauth_client": [
