@@ -10,7 +10,7 @@ on:
 jobs:
   ios-build:
     name: create unitest report
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: .
@@ -21,4 +21,4 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
         with:
-          files: "test-results/**/*.xml"
+          files: "coverage/**/*.xml"
