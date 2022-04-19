@@ -1,0 +1,19 @@
+name: IOS Production Build
+on:
+  push:
+    branches:
+      - main
+# on:
+#   workflow_dispatch:
+#   release:
+#     types: [published] # only run the workflow when a new release has been published
+jobs:
+  ios-build:
+    name: create unitest report
+    runs-on: macOS-latest
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ArtiomTr/jest-coverage-report-action@v2
