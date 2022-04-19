@@ -17,6 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          test-script: npx jest --ci --json --coverage --testLocationInResults --testResultsProcessor="jest-junit"
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
